@@ -1,0 +1,32 @@
+Trivia app - play part of the 30 second clip of the song and guess the name
+
+- must find a way to make sure the song title isn't playing during the clip
+
+- full stack - with a database that keep tracks of the hardest songs - as a percentage of how many people got this one right or wrong
+
+
+- time based:
+  - leaderboard with the fatest times
+  - gameify it
+  - keep track of fastest times in a database (sql or nosql)
+
+- Sort by categories
+  - genre
+  - year
+  - related artist
+  - random
+
+  - sub categories
+    - difficulty
+
+what info do I need from spotify?
+- a list of genres and the ability to search
+- a list of countries and ability to search
+- a list of categories
+
+
+- we need to search artist to get their id's
+- then we need to use ids to get the songs
+  - thinking we can cache the ids that we have seen before and the top couple hundred to save the first api call
+
+
