@@ -82,20 +82,24 @@ module.exports = {
       }
     });
   },
-  getAlbum: function(albumid, callback) {
+  getRecommendations: function(albumid, callback) {
     request.post(authOptions, function(error, response, body) {
       if (!error && response.statusCode === 200) {
 
         // use the access token to access the Spotify Web API
         var token = body.access_token;
         var options = {
-          url: `https://api.spotify.com/v1/recommendations`,
+          url: `https://api.spotify.com/v1/recommendations?seed_artists=3TVXtAsR1Inumwj472S9r4&seed_genres=rap&seed_tracks=5yY9lUy8nbvjM1Uyo1Uqoc`,
           headers: {
             'Authorization': 'Bearer ' + token
           },
           json: true
         };
+        console.log(options.url)
         request.get(options, function(error, response, body) {
+          if (error) {
+            throw error
+          }
           callback(body)
         });
       }

@@ -36,8 +36,12 @@ app.post('/track', (req, res) => {
   })
 })
 
-app.post('/album', (req, res) => {
-  toSpotify.getAlbum(req.body.albumid, result => {
+app.get('/recommendations', (req, res) => {
+  const song = req.query.songId;
+  const artist = req.query.artistId;
+  const genre = req.query.genreId;
+  const seed = {song, artist, genre}
+  toSpotify.getRecommendations(seed, result => {
     res.json(result)
   })
 })
