@@ -8,6 +8,9 @@ const baseUrl = 'https://api.spotify.com/v1'
 module.exports = {
   getCategories: function(callback) {
     request.post(authOptions, function(error, response, body) {
+      if (error) {
+        throw error
+      }
       if (!error && response.statusCode === 200) {
 
         // use the access token to access the Spotify Web API
@@ -20,6 +23,9 @@ module.exports = {
           json: true
         };
         request.get(options, function(error, response, body) {
+          if (error) {
+            throw error
+          }
           callback(body.categories.items)
         });
       }
@@ -27,6 +33,9 @@ module.exports = {
   },
   getArtist: function(artist, callback) {
     request.post(authOptions, function(error, response, body) {
+      if (error) {
+        throw error
+      }
       if (!error && response.statusCode === 200) {
 
         // use the access token to access the Spotify Web API
@@ -39,6 +48,9 @@ module.exports = {
           json: true
         };
         request.get(options, function(error, response, body) {
+          if (error) {
+            throw error
+          }
           callback(body)
         });
       }
@@ -46,8 +58,10 @@ module.exports = {
   },
   getTopTracks: function(id, callback) {
     request.post(authOptions, function(error, response, body) {
+      if (error) {
+        throw error
+      }
       if (!error && response.statusCode === 200) {
-
         // use the access token to access the Spotify Web API
         var token = body.access_token;
         var options = {
@@ -58,6 +72,9 @@ module.exports = {
           json: true
         };
         request.get(options, function(error, response, body) {
+          if (error) {
+            throw error
+          }
           callback(body)
         });
       }
@@ -65,6 +82,9 @@ module.exports = {
   },
   getOneTrack: function(trackid, callback) {
     request.post(authOptions, function(error, response, body) {
+      if (error) {
+        throw error
+      }
       if (!error && response.statusCode === 200) {
 
         // use the access token to access the Spotify Web API
@@ -77,19 +97,25 @@ module.exports = {
           json: true
         };
         request.get(options, function(error, response, body) {
+          if (error) {
+            throw error
+          }
           callback(body)
         });
       }
     });
   },
-  getRecommendations: function(albumid, callback) {
+  getRecommendations: function(seed, callback) {
     request.post(authOptions, function(error, response, body) {
+      if (error) {
+        throw error;
+      }
       if (!error && response.statusCode === 200) {
-
+        console.log(seed)
         // use the access token to access the Spotify Web API
         var token = body.access_token;
         var options = {
-          url: `https://api.spotify.com/v1/recommendations?seed_artists=3TVXtAsR1Inumwj472S9r4&seed_genres=rap&seed_tracks=5yY9lUy8nbvjM1Uyo1Uqoc`,
+          url: `https://api.spotify.com/v1/recommendations?seed_artists=${seed.artist}&seed_genres=${seed.genre}&seed_tracks=${seed.song}`,
           headers: {
             'Authorization': 'Bearer ' + token
           },

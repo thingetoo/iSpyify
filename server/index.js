@@ -5,8 +5,11 @@ const request = require('request');
 require('dotenv').config();
 const toSpotify = require('./../spotify-api/to-spotify.js')
 const bodyParser = require('body-parser');
+var timeout = require('connect-timeout');
 
 app.use(bodyParser())
+
+app.use(timeout('5s'));
 
 const port = 8080;
 
@@ -38,6 +41,7 @@ app.post('/track', (req, res) => {
 
 app.get('/recommendations', (req, res) => {
   const song = req.query.songId;
+  console.log(req.query)
   const artist = req.query.artistId;
   const genre = req.query.genreId;
   const seed = {song, artist, genre}
