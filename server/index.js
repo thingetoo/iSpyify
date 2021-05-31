@@ -1,55 +1,26 @@
-const express = require('express');
-const app = express();
-const path = require('path');
+const app = require('./server.js');
+const mongodb = require('mongodb');
 const request = require('request');
 require('dotenv').config();
-const toSpotify = require('./../spotify-api/to-spotify.js')
-const bodyParser = require('body-parser');
-var timeout = require('connect-timeout');
+const mongoose = require('mongoose');
 
-app.use(bodyParser())
+const port = process.env.PORT || 8080;
 
-app.use(timeout('5s'));
+const { Schema } = mongoose;
 
-const port = 8080;
-
-app.use(express.static(path.join(__dirname, '..')));
-
-app.get('/categories', (req, res) => {
-  toSpotify.getCategories((data) => {
-    res.json(data)
+mongoose.connect(
+  process.env.ISPYIFY_DB_URI,
+  {
+    poolSize: 50,
+    wtimeout: 2500,
+    useNewUrlParser: true
+  }
+)
+  .catch(err => {
+  throw err;
   })
-})
-
-app.post('/artist', (req, res) => {
-  toSpotify.getArtist(req.body.artist, (result) => {
-    res.json(result);
+  .then(async client => {
+    app.listen(port, () => {
+      console.log(`listening on port ${port}`)
+    })
   })
-})
-
-app.post('/tracks', (req, res) => {
-  toSpotify.getTopTracks(req.body.artistId, (result) => {
-    res.json(result);
-  })
-})
-
-app.post('/track', (req, res) => {
-  toSpotify.getOneTrack(req.body.trackid, (result) => {
-    res.json(result)
-  })
-})
-
-app.get('/recommendations', (req, res) => {
-  const song = req.query.songId;
-  console.log(req.query)
-  const artist = req.query.artistId;
-  const genre = req.query.genreId;
-  const seed = {song, artist, genre}
-  toSpotify.getRecommendations(seed, result => {
-    res.json(result)
-  })
-})
-
-app.listen(port, () => {
-  console.log(`Server listening at localhost:${port}!`);
-});
