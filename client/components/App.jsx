@@ -12,7 +12,7 @@ class App extends React.Component {
       time: 0,
       imageUrl: '',
       blur: 2,
-      artistInput: 'Drake',
+      artistInput: 'Taylor Swift',
       genres: '',
       artistId: '',
       songId: '',
@@ -267,23 +267,14 @@ class App extends React.Component {
           <h1 className="heading">iSpyify: Albums</h1>
           <form className="form">
             <div className="sign-in-title">
+              <h3>Ready to dive into the world of albums?</h3>
               {this.state.fireEmail ? (
                 <button onClick={(e) => this.signOut(e)}>Sign Out</button>
               ) : (
-                <button onClick={this.signIn}>Sign In</button>
+                <button id="sign-in-button" onClick={this.signIn}>
+                  Sign In
+                </button>
               )}
-            </div>
-            <div className="signin-inputs">
-              <label>
-                Username:
-                <input
-                  onChange={this.handleInputChange}
-                  value={this.state.username}
-                  type="text"
-                  name="username"
-                />
-              </label>
-              <input className="login-submit" type="submit" value="Play" />
             </div>
           </form>
           <div>
