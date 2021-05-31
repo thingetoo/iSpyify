@@ -28,6 +28,7 @@ class App extends React.Component {
       pointsWorth: 1,
       fireUser: '',
       fireEmail: null,
+      correctAlbum: '',
     };
     this.onArtistSearchChange = this.onArtistSearchChange.bind(this);
     this.playSong = this.playSong.bind(this);
@@ -178,6 +179,7 @@ class App extends React.Component {
         this.setState({
           imageUrl,
           songSelections: allSelections,
+          correctAlbum,
         });
       });
   }
@@ -267,7 +269,7 @@ class App extends React.Component {
           <h1 className="heading">iSpyify: Albums</h1>
           <form className="form">
             <div className="sign-in-title">
-              <h3>Ready to dive into the world of albums?</h3>
+              <header>Ready to dive into the world of albums?</header>
               {this.state.fireEmail ? (
                 <button onClick={(e) => this.signOut(e)}>Sign Out</button>
               ) : (
@@ -284,7 +286,7 @@ class App extends React.Component {
       );
     } else if (screen === 'game') {
       return (
-        <div className="main-container">
+        <div className="outer-container">
           <div id="header">
             <div className="score-digits">
               <div className="game-numbers">
@@ -301,7 +303,11 @@ class App extends React.Component {
                 </label>
               </div>
               <div className="mode">
-                <select name="gameMode" onChange={this.handleInputChange}>
+                <select
+                  id="level"
+                  name="gameMode"
+                  onChange={this.handleInputChange}
+                >
                   <option value="easy">Easy</option>
                   <option value="medium">Medium</option>
                   <option value="hard">Hard</option>
@@ -310,7 +316,7 @@ class App extends React.Component {
               </div>
             </div>
           </div>
-          <div className="main-container">
+          <div className="inner-container">
             {/* {
               this.state.albumId && <div onClick={this.playSong}><iframe ref={this.playButton} onMouseOver={this.playSong} src={`https://open.spotify.com/embed/album/${this.state.albumId}`} width="18" height="18" frameBorder="0" allowtransparency="true" allow="encrypted-media"></iframe></div>
             } */}
@@ -337,6 +343,7 @@ class App extends React.Component {
                 className="album-image"
                 style={{ filter: `blur(${this.state.blur}px)` }}
                 src={this.state.imageUrl}
+                alt={this.state.correctAlbum}
               ></img>
             </div>
             <Answers

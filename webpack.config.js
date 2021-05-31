@@ -2,7 +2,7 @@ const path = require('path');
 
 module.exports = {
   entry: './client/index.js',
-  mode: "development",
+  mode: 'development',
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'dist'),
@@ -16,19 +16,22 @@ module.exports = {
         use: {
           loader: 'babel-loader',
           options: {
-            presets: ['@babel/preset-react', '@babel/preset-env']
-          }
-        }
+            presets: ['@babel/preset-react', '@babel/preset-env'],
+          },
+        },
       },
       {
         test: /\.less$/,
         use: [
-            { loader: 'style-loader' },
-            { loader: 'css-loader' },
-            { loader: 'less-loader' }
-        ]
-    }
-    ]
-  }
-
+          { loader: 'style-loader' },
+          { loader: 'css-loader' },
+          { loader: 'less-loader' },
+        ],
+      },
+      {
+        test: /\.css$/,
+        use: [{ loader: 'style-loader' }, { loader: 'css-loader' }],
+      },
+    ],
+  },
 };
