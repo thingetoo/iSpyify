@@ -65,14 +65,10 @@ This project was inspired by the other great projects built using the Spotify AP
 - Run 'npm install' to install the dependencies
 - Run 'npm start' in one terminal and 'npm run build' in another terminal
 
-<!-- USAGE EXAMPLES -->
-
 # API Documentation
 
 API Routes and Mongo Schema setup
 https://docs.google.com/document/d/15YZd_PZaXBtqnHqv1-0PO6uAbcINl_q_OgL6_PhdU3s/edit
-
-<!-- ROADMAP -->
 
 ## Contributing
 
