@@ -1,7 +1,7 @@
 # iSpyify: A Game to Test Your Album Knowledge
 
 <p>
-    <img src="https://i.ibb.co/mNZ15hj/set-and-forget-ss.png" alt="Set and Forget Screen Shot"/>
+    <img src="https://i.ibb.co/Wz77R47/Screen-Shot-2021-05-29-at-7-54-50-PM.png" alt="Set and Forget Screen Shot"/>
 </p>
 
 ## About The Project
@@ -69,7 +69,7 @@ This project was inspired by the other great projects built using the Spotify AP
 
 ## Usage
 
-![Demo of website](https://media.giphy.com/media/fnkc4ssvyIpI6FleTU/giphy.gif)
+![Demo of website](https://drive.google.com/file/d/19Ww1tNhkECqq3bR4VbMp-cxWDk_M3Run/preview)
 
 # API Documentation
 
