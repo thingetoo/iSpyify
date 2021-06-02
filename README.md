@@ -69,8 +69,6 @@ This project was inspired by the other great projects built using the Spotify AP
 
 ## Usage
 
-![Demo of website](https://media.giphy.com/media/fnkc4ssvyIpI6FleTU/giphy.gif)
-
 # API Documentation
 
 API Routes and Mongo Schema setup
@@ -98,4 +96,4 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 ## Contact
 
-Project Link: [https://github.com/Team-Rocky/blueocean](https://github.com/Team-Rocky/blueocean)
+Project Link: [https://github.com/thingetoo/iSpyify](https://github.com/thingetoo/iSpyify)
