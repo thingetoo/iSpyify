@@ -30,3 +30,7 @@ what info do I need from spotify?
   - thinking we can cache the ids that we have seen before and the top couple hundred to save the first api call
 
 
+6/4/21
+
+-> Try to implement a SQL database(postgres) in place of Mongo - coming from Laurie's talk
+
